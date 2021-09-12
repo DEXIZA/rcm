@@ -1,12 +1,8 @@
-<h1>aaaaaaaaaaaa</h1>
-<%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
-<%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: :nav__logout %>
-
-
+<h1>店舗内連絡掲示板</h1>
 <% if user_signed_in? %>
 	<div class="nav__right">
     <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: :nav__logout %>
-	  <%= link_to "New Proto", "#", class: :nav__btn %>
+    <%= link_to current_user.name, "#", class: "user-nickname" %>
   </div>
 <% else %>
   <div class="nav__right">

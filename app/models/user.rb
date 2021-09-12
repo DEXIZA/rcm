@@ -7,7 +7,7 @@ class User < ApplicationRecord
   with_options presence: true do
   validates :name
   validates :birthday
-  validates :phone
+  validates :phone, format: { with: /\A[0-9]{10,11}\z/ }
     with_options presence: true, format: { with: /\A[ァ-ヶー]+\z/ } do
       validates :kana
     end
