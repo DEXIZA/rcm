@@ -1,8 +1,13 @@
 class TodosController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
+
   def index
+    @todos = Todo.order('created_at DESC')
   end
 
   def new
+    @todo = Todo.new
   end
 
 
