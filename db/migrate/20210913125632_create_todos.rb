@@ -3,8 +3,8 @@ class CreateTodos < ActiveRecord::Migration[6.0]
     create_table :todos do |t|
       t.string :title,  null: false
       t.text :content,  null: false
-      t.integer :urgency,  null: false
-      t.integer :who,  null: false
+      t.integer :urgency_id,  null: false
+      t.integer :who_id,  null: false
       t.references :user,  null: false, foreign_key: true
       t.timestamps
     end
