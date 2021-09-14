@@ -10,6 +10,15 @@ class TodosController < ApplicationController
     @todo = Todo.new
   end
 
+  def create
+    @todo = Todo.create(todo_params)
+    if @todo.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
 
   private
 

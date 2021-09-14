@@ -1,4 +1,18 @@
 <%= form_with model: @todo, local: true do |f| %>
+
+  <%= render 'shared/error_messages', model: f.object %>
+
+
+      <div class="weight-bold-text">
+        商品名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル" %>
+
+  <div class="weight-bold-text">必須</div>
+  <%= f.text_area :content, class:"items-text", id:"item-info", placeholder:"投稿内容" ,rows:"7" ,maxlength:"1000" %>
+
+
   <div class="img-upload">
     <div class="weight-bold-text">
       画像が必要であれば
@@ -10,4 +24,21 @@
       <%= f.file_field :image, id:"item-image" %>
     </div>
   </div>
+          <div class="weight-bold-text">
+          現在の状況
+          <span class="indispensable">必須</span>
+        </div>
+  <%= f.collection_select(:urgency_id, Urgency.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+
+            <div class="weight-bold-text">
+          担当
+          <span class="indispensable">必須</span>
+        </div>
+  <%= f.collection_select(:who_id, Who.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    <div class="sell-btn-contents">
+      <%= f.submit "出品する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
 <% end %>
+
+
