@@ -1,1 +1,11 @@
-aaaaa
+<h2 >
+  <%= @todo.title %>
+</h2>
+
+<div>
+  <%= simple_format(@todo.content) %>
+</div>
+
+<div>
+  <%= @todo.user.name %>
+</div>
