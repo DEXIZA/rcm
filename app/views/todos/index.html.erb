@@ -21,7 +21,8 @@
 <% if user_signed_in? %>
   <% @todos.each do |t| %>
     <div>
-    <%= t.title %>
+      <%= link_to t.title,todo_path(t.id),method: :get%>
+      投稿者 <%= t.user.name %>
     </div>
   <% end %>
 <% else %>

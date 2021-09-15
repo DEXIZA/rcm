@@ -1,5 +1,7 @@
 class TodosController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :set_todo, only: [:show]
+
 
 
   def index
@@ -19,6 +21,8 @@ class TodosController < ApplicationController
     end
   end
 
+  def show
+  end
 
   private
 
@@ -32,5 +36,10 @@ class TodosController < ApplicationController
     )
           .merge(user_id: current_user.id)
   end
+
+  def set_todo
+    @todo = Todo.find(params[:id])
+  end
+
 end
 
