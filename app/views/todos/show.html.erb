@@ -10,6 +10,14 @@
   <%= @todo.user.name %>
 </div>
 
+<% if @todo.image.present? %>
+<div class="sold-out">
+  <%= image_tag @todo.image %>
+</div>
+<% end %>
+<%# 画像がある場合は表示する %>
+
+
 <div>
   <%= link_to "もどる", root_path %>
 </div>
