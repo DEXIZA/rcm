@@ -10,12 +10,24 @@
   <%= @todo.user.name %>
 </div>
 
+<%# 画像がある場合は表示する %>
 <% if @todo.image.present? %>
 <div class="sold-out">
   <%= image_tag @todo.image %>
 </div>
 <% end %>
 <%# 画像がある場合は表示する %>
+
+<%# ログイン・ログアウトの判定、ログアウト状態だと表示しない %>
+<% if user_signed_in?%> 
+  <%# 投稿した本人が詳細ページを見た時の処理 %>
+  <% if current_user.id == @todo.user_id %>
+    <%= link_to "商品の編集", edit_todo_path(@todo.id), method: :get, class: "item-red-btn" %>
+    <%= link_to "削除", todo_path(@todo.id),method: :delete, class:"item-destroy" %>
+  <% end %>
+  <%# 投稿した本人が詳細ページを見た時の処理 %>
+<% end %>
+<%# ログイン・ログアウトの判定、ログアウト状態だと表示しない %>
 
 
 <div>
