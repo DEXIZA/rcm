@@ -1,0 +1,21 @@
+<%= form_with(url: search_todos_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
+---------
+<% if user_signed_in? %>
+  <% @todos.each do |t| %>
+    <div>
+      <%= link_to t.title,todo_path(t.id),method: :get%>
+      投稿者 <%= t.user.name %>
+    </div>
+  <% end %>
+<% else %>
+  <div>ログインして下さい</div>
+<% end %>
+
+
+---------
+<div>
+  <%= link_to "検索条件を無くす", root_path %>
+</div>

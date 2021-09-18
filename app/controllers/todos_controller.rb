@@ -7,7 +7,7 @@ class TodosController < ApplicationController
 
 
   def index
-    @todos = Todo.order('created_at DESC')
+    @todos = Todo.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -43,6 +43,10 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     redirect_to root_path
+  end
+
+  def search
+    @todos = Todo.search(params[:keyword])
   end
 
   private
