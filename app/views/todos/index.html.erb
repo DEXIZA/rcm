@@ -20,6 +20,12 @@
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
 
+<%= search_form_for @p, url: searchh_todos_path do |f| %>
+  <%= f.label :title_eq, '商品名' %>
+  <%= f.collection_select :title_eq, @todo_title, :title, :title,  include_blank: '指定なし' %>
+  <br>
+  <%= f.submit '検索' %>
+<% end %>
 
 ---------
 <% if user_signed_in? %>

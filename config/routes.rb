@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :todos do
     collection do
       get 'search'
+      get 'searchh'
     end
   end
 end

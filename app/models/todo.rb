@@ -18,7 +18,7 @@ class Todo < ApplicationRecord
       .or(Todo.where('title collate utf8_unicode_ci LIKE(?)', "%#{search}%"))
       # collate utf8_unicode_ciは広範囲の検索を可能にする
     else
-      Todo.includes(:user).order('created_at DESC')
+      Todo.none
     end
   end
 
