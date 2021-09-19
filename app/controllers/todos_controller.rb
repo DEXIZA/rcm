@@ -63,7 +63,10 @@ class TodosController < ApplicationController
       :content,
       :urgency_id,
       :who_id,
-      :image
+      :image,
+      :category_id,
+      :start,
+      :end
     )
           .merge(user_id: current_user.id)
   end

@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 2021_09_13_130435) do
   create_table "todos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
+    t.datetime "start"
+    t.datetime "end"
+    t.integer "category_id", null: false
     t.integer "urgency_id", null: false
     t.integer "who_id", null: false
     t.bigint "user_id", null: false
