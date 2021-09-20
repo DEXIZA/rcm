@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_044445) do
     t.datetime "end"
     t.integer "category_id", null: false
     t.integer "urgency_id", null: false
-    t.integer "who_id", null: false
+    t.integer "roll_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

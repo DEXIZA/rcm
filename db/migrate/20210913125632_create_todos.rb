@@ -7,7 +7,7 @@ class CreateTodos < ActiveRecord::Migration[6.0]
       t.datetime :end
       t.integer :category_id,  null: false
       t.integer :urgency_id,  null: false
-      t.integer :who_id,  null: false
+      t.integer :roll_id,  null: false
       t.references :user,  null: false, foreign_key: true
       t.timestamps
     end

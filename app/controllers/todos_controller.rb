@@ -10,6 +10,11 @@ class TodosController < ApplicationController
   def index
     @todos = Todo.includes(:user).order('created_at DESC')
     set_todo_column       # privateメソッド内で定義
+    @roll1 = Todo.where(roll_id: 1 ).includes(:user).order('created_at DESC')
+    @roll2 = Todo.where(roll_id: 1..2 ).includes(:user).order('created_at DESC')
+    @roll3 = Todo.where(roll_id: 1..3 ).includes(:user).order('created_at DESC')
+    @roll4 = Todo.where(roll_id: 1..4 ).includes(:user).order('created_at DESC')
+
   end
 
   def new
@@ -64,7 +69,7 @@ class TodosController < ApplicationController
       :title,
       :content,
       :urgency_id,
-      :who_id,
+      :roll_id,
       :image,
       :category_id,
       :start,

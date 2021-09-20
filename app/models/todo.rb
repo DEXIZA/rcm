@@ -3,7 +3,7 @@ class Todo < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   belongs_to :urgency
-  belongs_to :who
+  belongs_to :roll
   belongs_to :category
   has_many :comments
 
@@ -12,7 +12,6 @@ class Todo < ApplicationRecord
     validates :content
     with_options numericality: { other_than: 1 } do
       validates :urgency_id
-      validates :who_id
       validates :category_id
     end
   end

@@ -28,20 +28,33 @@
 
 ---------
 <% if user_signed_in? %>
-  <% @todos.each do |t| %>
-    <div>
-      <%= link_to t.title,todo_path(t.id),method: :get%>
-      投稿者 <%= t.user.name %>
-    </div>
+  <% if can? :read, :ptn %>
+    <p>----------ptnだけ表示されている</p>
+    <%= render partial: 'todo',collection: @roll1%>
   <% end %>
 
-  <% if can? :read, :hello %>
-    <p>read権限があります</p>  
+  <% if can? :read, :ptnreader %>
+    <p>----------主任だけ表示されている</p>
+    <%= render partial: 'todo',collection: @roll2 %>
   <% end %>
 
-  <% if can? :read, :aaa %>
-    <p>reaあります</p>  
+  <% if can? :read, :employee %>
+    <p>----------社員だけ表示されている</p>
+    <%= render partial: 'todo',collection: @roll3 %>
+  <% end %>
+
+  <% if can? :read, :deputy %>
+    <p>----------副店長だけ表示されている</p>
+    <%= render partial: 'todo',collection: @roll4 %>
+  <% end %>
+
+  <% if can? :read,:mng %>
+    <p>----------店長だけ表示されている</p>
+    <%= render partial: 'todo',collection: @todos %>
   <% end %>
 <% else %>
   <div>ログインして下さい</div>
 <% end %>
+
+
+
