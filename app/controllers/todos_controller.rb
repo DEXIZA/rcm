@@ -26,6 +26,8 @@ class TodosController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @todo.comments.includes(:user)
   end
 
   def edit

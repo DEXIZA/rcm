@@ -5,6 +5,7 @@ class Todo < ApplicationRecord
   belongs_to :urgency
   belongs_to :who
   belongs_to :category
+  has_many :comments
 
   with_options presence: true do
     validates :title

@@ -6,5 +6,6 @@ Rails.application.routes.draw do
       get 'search'
       get 'searchh'
     end
+    resources :comments, only: :create
   end
 end
