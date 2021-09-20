@@ -8,6 +8,8 @@ class Ability
       can :manage, :all
     elsif user.roll == 1
       can :read, :hello
+    elsif user.roll == 3
+      can :read, :aaa
     end
   end
 end

@@ -34,6 +34,14 @@
       投稿者 <%= t.user.name %>
     </div>
   <% end %>
+
+  <% if can? :read, :hello %>
+    <p>read権限があります</p>  
+  <% end %>
+
+  <% if can? :read, :aaa %>
+    <p>reaあります</p>  
+  <% end %>
 <% else %>
   <div>ログインして下さい</div>
 <% end %>
