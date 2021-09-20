@@ -4,13 +4,19 @@ class Todo < ApplicationRecord
   has_one_attached :image
   belongs_to :urgency
   belongs_to :who
+  belongs_to :category
+  has_many :comments
 
   with_options presence: true do
     validates :title
     validates :content
+    with_options numericality: { other_than: 1 } do
+      validates :urgency_id
+      validates :who_id
+      validates :category_id
+    end
   end
-  validates :urgency_id, numericality: { other_than: 1 } 
-  validates :who_id, numericality: { other_than: 1 } 
+
 
   def self.search(search)
     if search != ""
@@ -18,7 +24,7 @@ class Todo < ApplicationRecord
       .or(Todo.where('title collate utf8_unicode_ci LIKE(?)', "%#{search}%"))
       # collate utf8_unicode_ciは広範囲の検索を可能にする
     else
-      Todo.includes(:user).order('created_at DESC')
+      Todo.none
     end
   end
 

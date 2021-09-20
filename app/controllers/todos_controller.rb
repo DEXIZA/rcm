@@ -3,11 +3,13 @@ class TodosController < ApplicationController
   before_action :set_todo, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
+  before_action :search_todo, only: [:index, :searchh]
 
 
 
   def index
     @todos = Todo.includes(:user).order('created_at DESC')
+    set_todo_column       # privateメソッド内で定義
   end
 
   def new
@@ -24,6 +26,8 @@ class TodosController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @todo.comments.includes(:user)
   end
 
   def edit
@@ -49,6 +53,10 @@ class TodosController < ApplicationController
     @todos = Todo.search(params[:keyword])
   end
 
+  def searchh
+    @results = @p.result.includes(:user)  # 検索条件にマッチした商品の情報を取得
+  end
+
   private
 
   def todo_params
@@ -57,7 +65,10 @@ class TodosController < ApplicationController
       :content,
       :urgency_id,
       :who_id,
-      :image
+      :image,
+      :category_id,
+      :start,
+      :end
     )
           .merge(user_id: current_user.id)
   end
@@ -68,6 +79,14 @@ class TodosController < ApplicationController
 
   def move_to_index
     redirect_to action: :index unless current_user.id == @todo.user_id
+  end
+
+  def search_todo
+    @p = Todo.ransack(params[:q])  # 検索オブジェクトを生成
+  end
+
+  def set_todo_column
+    @todo_title = Todo.select("title").distinct  # 重複なくnameカラムのデータを取り出す
   end
 
 end
