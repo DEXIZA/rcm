@@ -12,7 +12,7 @@
 
 <%# 画像がある場合は表示する %>
 <% if @todo.image.present? %>
-<div class="sold-out">
+<div >
   <%= image_tag @todo.image %>
 </div>
 <% end %>
@@ -33,6 +33,18 @@
     <% if user_signed_in? %>
       <%= form_with(model: [@todo, @comment], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+          <div class="img-upload">
+            <div class="weight-bold-text">
+              画像が必要であれば
+            </div>
+            <div class="click-upload">
+              <p>
+                クリックしてファイルをアップロード
+              </p>
+              <%= form.file_field :image, id:"item-image" %>
+            </div>
+          </div>
+
         <%= form.submit "SEND" %>
       <% end %>
     <% else %>
@@ -42,13 +54,18 @@
 
 
 
-      <div class="comments">
+    <div class="comments">
       <h4>＜コメント一覧＞</h4>
       <% @comments.each do |comment| %>
         <p>
           <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
           <%= comment.text %>
         </p>
+        <% if comment.image.present? %>
+          <div >
+            <%= image_tag comment.image %>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
