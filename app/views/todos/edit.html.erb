@@ -33,7 +33,7 @@
           担当
           <span class="indispensable">必須</span>
         </div>
-  <%= f.collection_select(:who_id, Who.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  <%= f.collection_select(:roll_id, Roll.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
     <div class="sell-btn-contents">
       <%= f.submit "投稿する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>

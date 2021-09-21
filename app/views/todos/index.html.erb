@@ -1,15 +1,8 @@
 <h1>店舗内連絡掲示板</h1>
-<% if user_signed_in? %>
 	<div class="nav__right">
     <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: :nav__logout %>
     <%= link_to current_user.name, "#", class: "user-nickname" %>
   </div>
-<% else %>
-  <div class="nav__right">
-	  <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
-    <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
-  </div>
-<% end %>
   <div>
     <%= link_to "投稿", new_todo_path, class: :nav__btn %>
   </div>
@@ -26,14 +19,33 @@
   <%= f.submit '検索' %>
 <% end %>
 
+<%= link_to "じぶんがとうこうしたもの", mytodo_todos_path %>
+
+
 ---------
-<% if user_signed_in? %>
-  <% @todos.each do |t| %>
-    <div>
-      <%= link_to t.title,todo_path(t.id),method: :get%>
-      投稿者 <%= t.user.name %>
-    </div>
+  <% if can? :read, :ptn %>
+    <p>----------ptnだけ表示されている</p>
+    <%= render partial: 'todo',collection: @roll1%>
   <% end %>
-<% else %>
-  <div>ログインして下さい</div>
-<% end %>
+
+  <% if can? :read, :ptnreader %>
+    <p>----------主任だけ表示されている</p>
+    <%= render partial: 'todo',collection: @roll2 %>
+  <% end %>
+
+  <% if can? :read, :employee %>
+    <p>----------社員だけ表示されている</p>
+    <%= render partial: 'todo',collection: @roll3 %>
+  <% end %>
+
+  <% if can? :read, :deputy %>
+    <p>----------副店長だけ表示されている</p>
+    <%= render partial: 'todo',collection: @roll4 %>
+  <% end %>
+
+  <% if can? :read,:mng %>
+    <p>----------店長だけ表示されている</p>
+    <%= render partial: 'todo',collection: @todos %>
+  <% end %>
+
+

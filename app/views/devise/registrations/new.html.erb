@@ -52,6 +52,9 @@
                     date_separator: '%s'),
                   "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
     </div>
+  <div class="field">
+   <%= f.collection_select(:roll, Roll.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

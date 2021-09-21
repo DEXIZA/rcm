@@ -29,11 +29,13 @@
         </div>
   <%= f.collection_select(:urgency_id, Urgency.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
 
-          <div >
-          担当
-          <span >必須</span>
+        <div >
+          閲覧範囲（Ptn＜Ptn主任＜社員＜副店長＜店長)
+          <br>
+          ※店長は全ての投稿を閲覧できます。
         </div>
-  <%= f.collection_select(:who_id, Who.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  <%= f.collection_select(:roll_id, Roll.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  <div>Ptn=全員閲覧可能</div>
 
             <div >
           カテゴリー
