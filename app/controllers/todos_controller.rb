@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   before_action :set_todo, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
@@ -14,7 +14,6 @@ class TodosController < ApplicationController
     @roll2 = Todo.where(roll_id: 1..2 ).includes(:user).order('created_at DESC')
     @roll3 = Todo.where(roll_id: 1..3 ).includes(:user).order('created_at DESC')
     @roll4 = Todo.where(roll_id: 1..4 ).includes(:user).order('created_at DESC')
-
   end
 
   def new
@@ -60,6 +59,10 @@ class TodosController < ApplicationController
 
   def searchh
     @results = @p.result.includes(:user)  # 検索条件にマッチした商品の情報を取得
+  end
+
+  def mytodo
+    @mytodo = Todo.where(user_id: current_user.id).includes(:user).order("created_at DESC")
   end
 
   private

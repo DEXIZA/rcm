@@ -1,15 +1,8 @@
 <h1>店舗内連絡掲示板</h1>
-<% if user_signed_in? %>
 	<div class="nav__right">
     <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: :nav__logout %>
     <%= link_to current_user.name, "#", class: "user-nickname" %>
   </div>
-<% else %>
-  <div class="nav__right">
-	  <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
-    <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
-  </div>
-<% end %>
   <div>
     <%= link_to "投稿", new_todo_path, class: :nav__btn %>
   </div>
@@ -26,8 +19,10 @@
   <%= f.submit '検索' %>
 <% end %>
 
+<%= link_to "じぶんがとうこうしたもの", mytodo_todos_path %>
+
+
 ---------
-<% if user_signed_in? %>
   <% if can? :read, :ptn %>
     <p>----------ptnだけ表示されている</p>
     <%= render partial: 'todo',collection: @roll1%>
@@ -52,9 +47,5 @@
     <p>----------店長だけ表示されている</p>
     <%= render partial: 'todo',collection: @todos %>
   <% end %>
-<% else %>
-  <div>ログインして下さい</div>
-<% end %>
-
 
 
