@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to:'todos#index'
+  devise_for :users
   resources :todos do
     collection do
       get 'search'
@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     end
     resources :comments, only: :create
   end
+  resources :users,only: [:index,:show, :edit, :update]
 end
