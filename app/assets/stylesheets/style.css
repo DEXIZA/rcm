@@ -1,0 +1,10 @@
+body {
+  background-color: #e8fdef;
+}
+.container {
+  margin: 20px 0;
+  padding: 30px;
+  box-shadow: 0 0 10px rgb(41 41 41 / 20%);
+  background-color: white;
+  box-sizing: border-box;
+}

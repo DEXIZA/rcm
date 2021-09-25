@@ -1,64 +1,66 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<%# ーーーー名前入力 %>
-  <div class="field">
-  <label class="form-text">お名前</label><br />
-    <%= f.text_area :name,size: "20x1", autocomplete: "name" %>
-  </div>
-<%# ーーーー名前入力 %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>※<%= @minimum_password_length %> 文字以上入れて下さい。</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :kana %><br />
-    <%= f.text_area :kana,size: "20x1", autocomplete: "kana" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_area :phone,size: "20x1", autocomplete: "phone" %>
-  </div>
+  <%# ーーーー名前入力 %>
+    <div class="field">
+    <label class="form-text">お名前</label><br />
+      <%= f.text_area :name,size: "20x1", autocomplete: "name" %>
+    </div>
+  <%# ーーーー名前入力 %>
 
     <div class="field">
-      <%= raw sprintf(
-                  f.date_select(
-                    :birthday,
-                    class:'select-birth',
-                    id:"birth-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 1930,
-                    end_year: (Time.now.year - 5),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
-  <div class="field">
-   <%= f.collection_select(:roll, Roll.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>※<%= @minimum_password_length %> 文字以上入れて下さい。</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :kana %><br />
+      <%= f.text_area :kana,size: "20x1", autocomplete: "kana" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone %><br />
+      <%= f.text_area :phone,size: "20x1", autocomplete: "phone" %>
+    </div>
+
+      <div class="field">
+        <%= raw sprintf(
+                    f.date_select(
+                      :birthday,
+                      class:'select-birth',
+                      id:"birth-date",
+                      use_month_numbers: true,
+                      prompt:'--',
+                      start_year: 1930,
+                      end_year: (Time.now.year - 5),
+                      date_separator: '%s'),
+                    "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      </div>
+    <div class="field">
+    <%= f.collection_select(:roll, Roll.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+</div >
 
 <%= render "devise/shared/links" %>

@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     end
     resources :comments, only: :create
   end
-  resources :users
+  resources :users,only: [:index,:show, :edit, :update]
 end

@@ -1,0 +1,8 @@
+<% @user.each do |t| %>
+    <div>
+      <%= link_to t.name,user_path(t.id),method: :get%>
+      連絡先　<%= t.phone%>
+      入社日　<%= t.created_at.strftime('%Y/%m/%d')%>
+      役職　<%= t.roll%>
+    </div>
+<% end %>

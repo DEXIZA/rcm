@@ -9,11 +9,11 @@ class Ability
     elsif user.roll == 1
       can :read, :ptn
     elsif user.roll == 2
-      can :read, :ptnreader
+      can :read, :ptnreader #Ptn主任
     elsif user.roll == 3
-      can :read, :employee
+      can :read, :employee #社員
     elsif user.roll == 4
-      can :read, :deputy
+      can :read, :deputy #副店長
     end
   end
 end
