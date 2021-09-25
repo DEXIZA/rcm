@@ -11,7 +11,6 @@ class Todo < ApplicationRecord
     validates :title
     validates :content
     with_options numericality: { other_than: 1 } do
-      validates :urgency_id
       validates :category_id
     end
   end

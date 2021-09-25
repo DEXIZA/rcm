@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @user = User.order('created_at ASC')
+    @user = User.where(roll: 1..5 ).order('created_at ASC')
   end
 
   def show
@@ -33,5 +33,5 @@ private
   end
 
   def move_to_index
-    redirect_to action: :index unless current_user.roll == 5 || current_user.roll == 4 || current_user.roll == 3
+    redirect_to action: :index unless current_user.roll == 5 || current_user.roll == 4 || current_user.roll == 3|| current_user.roll == 6
   end
