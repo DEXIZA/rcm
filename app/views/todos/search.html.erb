@@ -26,7 +26,7 @@
 
   <% if can? :manege,:all %>
     <p>-店長だけ表示されている</p>
-    <%= render partial: 'todo',collection: @roll5 %>
+    <%= render partial: 'todo',collection: @todos %>
   <% end %>
 <% else %>
   <div>ログインして下さい</div>

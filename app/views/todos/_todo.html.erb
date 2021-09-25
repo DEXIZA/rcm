@@ -1,5 +1,14 @@
-<div>
-<%= link_to todo.title,todo_path(todo.id),method: :get%>
-<%= todo.user.name %>
-<%= todo.roll.name %>
+<div class="row2">
+  <div class="container3">
+    <h3><%= link_to todo.title,todo_path(todo.id),method: :get%></h3>
+    <div class="sabu">
+      投稿者: <%= todo.user.name %>
+    </div>
+    <div class="sabu">
+      カテゴリー: <%= todo.category.name %>
+    </div>
+    <div class="sabu">
+      閲覧範囲: <%= todo.roll.name %>
+    </div>
+  </div>
 </div>
