@@ -24,7 +24,7 @@
     <%= render partial: 'todo',collection: @roll4 %>
   <% end %>
 
-  <% if can? :manege,:all %>
+  <% if can? :read,:mng %>
     <p>-店長だけ表示されている</p>
     <%= render partial: 'todo',collection: @todos %>
   <% end %>
