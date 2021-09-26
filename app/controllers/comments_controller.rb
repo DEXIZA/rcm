@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
@@ -8,6 +9,11 @@ class CommentsController < ApplicationController
       @comments = @todo.comments
       render "todos/show"
     end
+  end
+
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   private

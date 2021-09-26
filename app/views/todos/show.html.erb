@@ -1,75 +1,95 @@
-<h2 >
-  <%= @todo.title %>
-</h2>
+<h2>投稿内容</h2>
+<div class="row6">
+  <div class="row4">
+    <div class="container">
+      <h2 ><%= @todo.title %></h2>
 
-<div>
-  <%= simple_format(@todo.content) %>
-</div>
-
-<div>
-  <%= @todo.user.name %>
-</div>
-
-<%# 画像がある場合は表示する %>
-<% if @todo.image.present? %>
-<div >
-  <%= image_tag @todo.image %>
-</div>
-<% end %>
-<%# 画像がある場合は表示する %>
-
-<%# ログイン・ログアウトの判定、ログアウト状態だと表示しない %>
-<% if user_signed_in?%> 
-  <%# 投稿した本人が詳細ページを見た時の処理 %>
-  <% if current_user.id == @todo.user_id %>
-    <%= link_to "商品の編集", edit_todo_path(@todo.id), method: :get, class: "item-red-btn" %>
-    <%= link_to "削除", todo_path(@todo.id),method: :delete, class:"item-destroy" %>
-  <% end %>
-  <%# 投稿した本人が詳細ページを見た時の処理 %>
-<% end %>
-<%# ログイン・ログアウトの判定、ログアウト状態だと表示しない %>
-
-  <div>
-    <% if user_signed_in? %>
-      <%= form_with(model: [@todo, @comment], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-          <div class="img-upload">
-            <div class="weight-bold-text">
-              画像が必要であれば
-            </div>
-            <div class="click-upload">
-              <p>
-                クリックしてファイルをアップロード
-              </p>
-              <%= form.file_field :image, id:"item-image" %>
-            </div>
-          </div>
-
-        <%= form.submit "SEND" %>
-      <% end %>
-    <% else %>
-      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
-    <% end %>
+      <div>
+        <%= simple_format(@todo.content) %>
+      </div>
+    </div>
   </div>
 
 
+  <%# 画像がある場合は表示する %>
+  <% if @todo.image.present? %>
+    <div class="row5">
+      <div class="container4">
+          <div class="box６">添付画像</div><br>
+          <%=image_tag @todo.image ,class: 'sized' %>
+      </div>
+    </div>
+  <% end %>
+  <%# 画像がある場合は表示する %>
+  <div class="boxContainer2">
+    <span class="showsabu">投稿者：</span><div class="box3"><%= @todo.user.name %></div>
+    <span class="showsabu">閲覧範囲：</span><div class="box3"><%= @todo.category.name %></div>
+    <span class="showsabu">進行状況：</span><div class="box3"><%= @todo.urgency.name %></div>
+  </div>
 
-    <div class="comments">
-      <h4>＜コメント一覧＞</h4>
-      <% @comments.each do |comment| %>
-        <p>
-          <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
-          <%= comment.text %>
-        </p>
-        <% if comment.image.present? %>
-          <div >
-            <%= image_tag comment.image %>
-          </div>
-        <% end %>
-      <% end %>
+  <div class="boxContainer2">
+    <% if @todo.start.present? %>
+      <span class="showsabu">開始日時：</span><div class="box3"><%= l @todo.start %></div>
+    <% end %>
+  </div>
+    <div class="boxContainer2">
+    <% if @todo.end.present? %>
+      <span class="showsabu">開始日時：</span><div class="box3"><%= l @todo.end %></div>
+    <% end %>
+  </div>
+    <div class="sabu">
+      投稿日時: <%= l @todo.created_at %>
+    </div>
+    <div class="sabu">
+      最終編集日時: <%= l @todo.updated_at %>
     </div>
 
+      <%# ログイン・ログアウトの判定、ログアウト状態だと表示しない %>
+      <% if user_signed_in?%> 
+        <%# 投稿した本人が詳細ページを見た時の処理 %>
+        <% if current_user.id == @todo.user_id %>
+          <%= link_to "投稿内容編集", edit_todo_path(@todo.id), method: :get, class: "box4" %>
+          <%= link_to "削除", todo_path(@todo.id),method: :delete, class:"box5" %>
+        <% end %>
+        <%# 投稿した本人が詳細ページを見た時の処理 %>
+      <% end %>
+      <%# ログイン・ログアウトの判定、ログアウト状態だと表示しない %>
+  <div>
+    <%= link_to "もどる", root_path %>
+  </div>
 
-<div>
-  <%= link_to "もどる", root_path %>
+<hr class="hrdef">
+  <div class="row7">
+    <div class="container5">
+      <div class="input-birth-wrap">
+          <%= form_with(model: [@todo, @comment], local: true) do |form| %>
+            <%= form.text_area :text, placeholder: "投稿に対してコメントできます",rows:"1", class: :tiisaku2 %>
+            <div class="ccccc">※必要であれば画像添付</div><%= form.file_field :image, class: :tiisaku %>
+            <%= form.submit "コメントを投稿", class: :form__btn4 %>
+          <% end %>
+      </div>
+      <div class="comments">
+        <h4>＜コメント一覧＞</h4>
+          <% @comments.each do |comment| %>
+            <p>
+              <%= link_to comment.user.name, "/users/#{comment.user_id}" %>：
+              <%= comment.text %>
+              <span class="ccccc"><%= l comment.created_at %></span>
+            <% if current_user.id == comment.user_id %>
+              <%= link_to "削除",comment_path(comment.id), method: :delete, class:"box5" %>
+            <% end %>
+            </p>
+            <% if comment.image.present? %>
+              <div >
+                <%= image_tag comment.image,class: :sized%>
+              </div>
+            <% end %>
+          <% end %>
+    </div>
+  </div>
+
+  <div>
+    <%= link_to "もどる", root_path %>
+  </div>
 </div>
+

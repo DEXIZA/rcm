@@ -1,14 +1,14 @@
-  <h1>店舗掲示板</h1>
-      <div class="aaaaa">
-        おはようございます！ <%= current_user.name %>
-      </div>
-
-      <div>
-        <%= link_to "投稿", new_todo_path, class: :nav__btn %>
-      </div>
-      <%= link_to "従業員リスト", users_path %>
+  <h1 class="aaaaa">ゆず庵○○店　掲示板</h1><br>
+  <div class="bbbbb">おはようございます！<%= current_user.name %>さん！</div>
+      
+    <div class="boxContainer">
+      <div class="box9"><%= link_to "投稿する", new_todo_path %></div>
+      <div class="box"><%= link_to "従業員リスト", users_path %></div>
+      <div class="box"><%= link_to "自分の投稿", mytodo_todos_path %></div>
+      <div class="box2"><%= link_to "ログアウト", destroy_user_session_path,method: :delete %></div>
+    </div>
       <%= form_with(url: search_todos_path, local: true, method: :get, class: "search-form") do |form| %>
-        <%= form.text_field :keyword, placeholder: "タイトルと内容を検索する", class: "search-input" %>
+        <%= form.text_field :keyword, placeholder: "タイトルと内容から検索する", class: "search-input" %>
         <%= form.submit "検索", class: "search-btn" %>
       <% end %>
 
@@ -18,30 +18,32 @@
         <%#<%= f.submit '検索' %>
       <%#<% end %>
 
-      <%= link_to "自分が投稿したものの確認", mytodo_todos_path %>
-      <div><%= link_to "ログアウト", destroy_user_session_path,method: :delete %></div>
----------
-  <% if can? :read, :ptn %>
-    <p>＜投稿一覧＞</p>
-    <%= render partial: 'todo',collection: @roll1%>
-  <% end %>
 
-  <% if can? :read, :ptnreader %>
-    <p>＜Ptn主任用投稿一覧＞</p>
-    <%= render partial: 'todo',collection: @roll2 %>
-  <% end %>
+<div class="contents row2">
+  <div class="container">
+    <% if can? :read, :ptn %>
+      <p>＜投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @roll1%>
+    <% end %>
 
-  <% if can? :read, :employee %>
-    <p>＜社員用投稿一覧＞</p>
-    <%= render partial: 'todo',collection: @roll3 %>
-  <% end %>
+    <% if can? :read, :ptnreader %>
+      <p>＜Ptn主任用投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @roll2 %>
+    <% end %>
 
-  <% if can? :read, :deputy %>
-    <p>＜副店長用投稿一覧＞</p>
-    <%= render partial: 'todo',collection: @roll4 %>
-  <% end %>
+    <% if can? :read, :employee %>
+      <p>＜社員用投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @roll3 %>
+    <% end %>
 
-  <% if can? :read,:mng %>
-    <p>＜店長用全稿一覧＞</p>
-    <%= render partial: 'todo',collection: @todos %>
-  <% end %>
+    <% if can? :read, :deputy %>
+      <p>＜副店長用投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @roll4 %>
+    <% end %>
+
+    <% if can? :read,:mng %>
+      <p>＜店長用全投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @todos %>
+    <% end %>
+  </div>
+</div>

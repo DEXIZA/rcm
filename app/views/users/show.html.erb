@@ -1,3 +1,25 @@
-<h1><%= @user.name %>のユーザーページ</h1>
+<div class="row2">
+  <div class="container">
+    <h1><%= @user.name %>のユーザーページ</h1>
+      <div>名前：<%= @user.name %></div>
+      <div>よみがな（カナ）：<%= @user.kana %></div>
+      <div>登録メール：<%= @user.email %></div>
+      <div>電話番号：<%= @user.phone %></div>
+      <div>誕生日：<%= @user.birthday.strftime('%m月%d日') %></div>
+      <div>役職No：<%= @user.roll %></div>
+      <div>入社日：<%= @user.created_at.strftime('%Y年%m月%d日')%><div>
+        <% if can? :read, :employee %>
+          <div><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+        <% end %>
 
-<%= link_to "プロフィール編集", edit_user_path(@user) %>
+        <% if can? :read, :deputy %>
+          <div><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+        <% end %>
+
+        <% if can? :read,:mng %>
+          <div><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+        <% end %>
+<br>
+    <div><%=link_to 'トップへもどる', root_path %></div>
+  </div>
+</div>

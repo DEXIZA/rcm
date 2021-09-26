@@ -14,6 +14,8 @@ class Ability
       can :read, :employee #社員
     elsif user.roll == 4
       can :read, :deputy #副店長
+    elsif user.roll == 6
+      can :manage,:all #admin
     end
   end
 end

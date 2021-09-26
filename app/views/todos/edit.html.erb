@@ -1,41 +1,57 @@
-<%= form_with model: @todo, local: true do |f| %>
-
-  <%= render 'shared/error_messages', model: f.object %>
-
-
-      <div class="weight-bold-text">
-        <span class="indispensable">必須</span>
-      </div>
+<h2>こちらは編集画面です！</h2>
+<div class="row6">
+  <div class="container">
+    <%= form_with model: @todo, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+          <div>
+            <span class="sabu">必須</span>
+          </div>
       <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル" %>
-
-  <div class="weight-bold-text">必須</div>
-  <%= f.text_area :content, class:"items-text", id:"item-info", placeholder:"投稿内容" ,rows:"7" ,maxlength:"1000" %>
-
-
-  <div class="img-upload">
-    <div class="weight-bold-text">
-      画像が必要であれば
-    </div>
-    <div class="click-upload">
-      <p>
-        クリックしてファイルをアップロード
-      </p>
-      <%= f.file_field :image, id:"item-image" %>
-    </div>
-  </div>
-          <div class="weight-bold-text">
-          現在の状況
-          <span class="indispensable">必須</span>
+      <div class="sabu">必須</div>
+      <%= f.text_area :content, class:"items-text", id:"item-info", placeholder:"投稿内容" ,rows:"30" ,maxlength:"1000" %>
+        <div class="sabu">閲覧範囲（Ptn＜Ptn主任＜社員＜副店長＜店長)<br>
+                          ※プライベートな内容は閲覧範囲を変えて下さい。<br>
+                          例：店長を指定すれば店長のみ閲覧出来ます。<br>
         </div>
-  <%= f.collection_select(:urgency_id, Urgency.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+      <%= f.collection_select(:roll_id, Roll.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="sabu">Ptn=店舗従業員全員閲覧可能です。</div>
+        <br>
 
+
+
+                <div >
+              カテゴリー
+              <span >選択必須</span>
+            </div>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+          <br>
+          <br>
+          <h3>以下は必要であれば入力</h3>
+          <hr class="hraaa">
+          <div>画像添付</div>
+          <%= f.file_field :image, id:"item-image" %>
+            <%= f.date_select(
+                        :start,
+                        prompt:'開始日時',
+                        start_year: Time.now.year,
+                        end_year: (Time.now.year + 3))%>
+                  <br>
+            <%= f.date_select(
+                        :end,
+                        prompt:'終了日時',
+                        start_year: Time.now.year,
+                        end_year: (Time.now.year + 3))%>
             <div class="weight-bold-text">
-          担当
-          <span class="indispensable">必須</span>
+              現在の状況
+            </div>
+      <%= f.collection_select(:urgency_id, Urgency.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+
+
+        <div class="sell-btn-contents">
+          <%= f.submit "投稿する" ,class: :form__btn2 %>
         </div>
-  <%= f.collection_select(:roll_id, Roll.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-    <div class="sell-btn-contents">
-      <%= f.submit "投稿する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
-    </div>
-<% end %>
+    <% end %>
+
+    <%=link_to 'もどる', root_path, class:"back-btn" %>
+  </div>
+</div>

@@ -1,8 +1,12 @@
-<% @user.each do |t| %>
-    <div>
-      <%= link_to t.name,user_path(t.id),method: :get%>
-      連絡先　<%= t.phone%>
-      入社日　<%= t.created_at.strftime('%Y/%m/%d')%>
-      役職　<%= t.roll%>
-    </div>
-<% end %>
+<div class="row2">
+  <div class="container">
+  <h2>従業員リスト(入社日降順)</h2>
+    <% @user.each do |t| %>
+        <div class="container3">
+          <%= link_to t.name,user_path(t.id),method: :get%>
+          <div class="sabu">連絡先：<%= t.phone%></div>
+          <div class="sabu">入社日：<%= t.created_at.strftime('%Y年%m月%d日')%></div>
+        </div>
+    <% end %>
+  </div>
+</div>
