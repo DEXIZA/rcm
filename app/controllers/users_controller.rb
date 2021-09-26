@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @user = User.where(roll: 1..5 ).order('created_at ASC')
+    @user = User.where(roll: 1..5 ).order(created_at: :desc)
   end
 
   def show
