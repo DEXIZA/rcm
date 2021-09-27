@@ -11,3 +11,16 @@
     <% end %>
   </div>
 </div>
+
+<div class="row2">
+  <div class="container">
+  <h2>退職者リスト</h2>
+    <% @retirement.each do |t| %>
+        <div class="container3">
+          <%= link_to t.name,user_path(t.id),method: :get%>
+          <div class="sabu">連絡先：<%= t.phone%></div>
+          <div class="sabu">退職日：<%= t.updated_at.strftime('%Y年%m月%d日')%></div>
+        </div>
+    <% end %>
+  </div>
+</div>
