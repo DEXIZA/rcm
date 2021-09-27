@@ -29,7 +29,7 @@ private
   end
   
   def user_params
-    params.fetch(:user, {}).permit(:name,:roll)
+    params.fetch(:user, {}).permit(:name,:roll,:password,:encrypted_password,:kana,:phone,:birthday,:email)
   end
 
   def move_to_index
