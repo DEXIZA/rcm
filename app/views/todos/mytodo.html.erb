@@ -1,3 +1,7 @@
-<h2>自分が投稿したもの一覧です！</h2>
-<%=link_to 'もどる', root_path, class:"back-btn" %>
-<%= render partial: 'todo',collection: @mytodo %>
+<div class="contents row2">
+  <div class="container">
+    <h2>自分が投稿したもの一覧です！</h2>
+    <%=link_to 'もどる', root_path, class:"back-btn" %>
+    <%= render partial: 'todo',collection: @mytodo %>
+  </div>
+</div>
