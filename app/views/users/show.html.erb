@@ -8,9 +8,6 @@
       <div>誕生日：<%= @user.birthday.strftime('%m月%d日') %></div>
       <div>役職No：<%= @user.roll %></div>
       <div>入社日：<%= @user.created_at.strftime('%Y年%m月%d日')%><div>
-        <% if can? :read, :employee %>
-          <div><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
-        <% end %>
 
         <% if can? :read, :deputy %>
           <div><%= link_to "プロフィール編集", edit_user_path(@user) %></div>

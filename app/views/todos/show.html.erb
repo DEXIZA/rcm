@@ -1,8 +1,8 @@
-<h2>投稿内容</h2>
 <div class="row6">
   <div class="row4">
     <div class="container">
-      <h2 ><%= @todo.title %></h2>
+    <h2>投稿内容</h2>
+      <h3><%= @todo.title %></h3>
 
       <div>
         <%= simple_format(@todo.content) %>
@@ -23,7 +23,7 @@
   <%# 画像がある場合は表示する %>
   <div class="boxContainer2">
     <span class="showsabu">投稿者：</span><div class="box3"><%= @todo.user.name %></div>
-    <span class="showsabu">閲覧範囲：</span><div class="box3"><%= @todo.category.name %></div>
+    <span class="showsabu">カテゴリー：</span><div class="box3"><%= @todo.category.name %></div>
     <span class="showsabu">進行状況：</span><div class="box3"><%= @todo.urgency.name %></div>
   </div>
 

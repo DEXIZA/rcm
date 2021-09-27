@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def index
     @user = User.where(roll: 1..5 ).order(created_at: :desc)
+    @retirement = User.where(roll: 6 ).order(updated_at: :desc)
+
   end
 
   def show
@@ -29,9 +31,9 @@ private
   end
   
   def user_params
-    params.fetch(:user, {}).permit(:name,:roll)
+    params.fetch(:user, {}).permit(:name,:roll,:password,:encrypted_password,:kana,:phone,:birthday,:email)
   end
 
   def move_to_index
-    redirect_to action: :index unless current_user.roll == 5 || current_user.roll == 4 || current_user.roll == 3|| current_user.roll == 6
+    redirect_to action: :index unless current_user.roll == 5 || current_user.roll == 4 || current_user.roll == 10
   end

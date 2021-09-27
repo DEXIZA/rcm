@@ -107,21 +107,6 @@ button, input, select, textarea {
   transition: 0.2s ease;
 }
 
-.aaaaa{
-  padding: 0.4em 1.6em;
-  font-size: 2em;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  user-select: none;
-  background: #f9ff2a38;
-  border: 1px #87CEFA solid;
-  border-radius: 3px;
-  box-shadow: 0 3px 3px 0 rgb(196,210,201), 0 1px 2px 0 rgb(196,210,201);
-  transition: 0.2s ease;
-  text-align: center
-}
-
-
 .bbbbb{
   text-shadow: 6px 4px 8px #abb900;
   color: rgb(0, 0, 0);
@@ -449,4 +434,27 @@ a:hover::after{
 }
 .tiisaku2{
   margin:0;
+}
+
+h2 {
+  position: relative;
+  padding: 0.25em 0;
+}
+h2:after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
+  background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+}
+
+h1 {
+  position: relative;
+  padding: 0.2em 0.5em;
+  background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+  background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+  color: white;
+  font-weight: lighter;
+  box-shadow: 13px 12px 5px rgba(88, 75, 75, 0.56);
+  text-align: center;
 }
