@@ -1,3 +1,5 @@
+
+@media screen and (min-width: 640px) { /*ウィンドウ幅が767px以上の場合に適用*/
 body {
   background-color: #e8fdef;
 }
@@ -458,3 +460,5 @@ h1 {
   box-shadow: 13px 12px 5px rgba(88, 75, 75, 0.56);
   text-align: center;
 }
+}
+
