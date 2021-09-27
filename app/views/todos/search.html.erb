@@ -2,39 +2,26 @@
   <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
-<div class="contents row2">
-  <div class="container">
-    <% if user_signed_in? %>
-      <% if can? :read, :ptn %>
-        <p>＜検索結果 Ptnのみ＞</p>
-        <%= render partial: 'todo',collection: @roll1 %>
-      <% end %>
-
-      <% if can? :read, :ptnreader %>
-        <p>＜検索結果 Ptn主任用＞</p>
-        <%= render partial: 'todo',collection: @roll2 %>
-      <% end %>
-
-      <% if can? :read, :employee %>
-        <p>＜検索結果 社員用＞</p>
-        <%= render partial: 'todo',collection: @roll3 %>
-      <% end %>
-
-      <% if can? :read, :deputy %>
-        <p>＜検索結果 副店長用＞</p>
-        <%= render partial: 'todo',collection: @roll4 %>
-      <% end %>
-
-      <% if can? :read,:mng %>
-        <p>＜検索結果 店長用＞</p>
-        <%= render partial: 'todo',collection: @todos %>
-      <% end %>
-    <% else %>
-      <div>ログインして下さい</div>
-    <% end %>
-
-    <div>
-      <%= link_to "検索条件を無くす", root_path %>
+    <div class="contents row2">
+      <div class="container">
+        <% if can? :read, :ptn %>
+          <p>＜投稿一覧＞</p>
+          <%= render partial: 'todo',collection: @roll1%>
+        <% elsif can? :read, :ptnreader %>
+          <p>＜Ptn主任用投稿一覧＞</p>
+          <%= render partial: 'todo',collection: @roll2 %>
+        <% elsif can? :read, :employee %>
+          <p>＜社員用投稿一覧＞</p>
+          <%= render partial: 'todo',collection: @roll3 %>
+        <% elsif can? :read, :deputy %>
+          <p>＜副店長用投稿一覧＞</p>
+          <%= render partial: 'todo',collection: @roll4 %>
+        <% elsif can? :read,:mng %>
+          <p>＜店長用全投稿一覧＞</p>
+          <%= render partial: 'todo',collection: @todos %>
+        <% end %>
+        <div><%= link_to "検索条件を無くす", root_path %></div>
+      </div>
     </div>
   </div>
 </div>

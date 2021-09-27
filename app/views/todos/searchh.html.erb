@@ -1,14 +1,24 @@
-<h1>
-  検索結果
-</h1>
-<%# 検索結果の個数で条件分岐 %>
-<% if @results.length !=0 %>
-  <% @results.each do |result| %>
-    <br>
-    <%= result.title %>
-  <% end %>
-<% else %>
-  該当する商品はありません
-<% end %>
-<br>
-<%= link_to 'トップページへ戻る', root_path %>
+<div class="contents row2">
+  <div class="container">
+    <h2>検索結果</h2>
+    <%= link_to 'トップページへ戻る', root_path %>
+    <% if can? :read, :ptn %>
+      <p>＜投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @searchh1%>
+    <% elsif can? :read, :ptnreader %>
+      <p>＜Ptn主任用投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @searchh2 %>
+    <% elsif can? :read, :employee %>
+      <p>＜社員用投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @searchh3 %>
+    <% elsif can? :read, :deputy %>
+      <p>＜副店長用投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @searchh4 %>
+    <% elsif can? :read,:mng %>
+      <p>＜店長用全投稿一覧＞</p>
+      <%= render partial: 'todo',collection: @searchh %>
+    <% end %>
+  </div>
+</div>
+
+

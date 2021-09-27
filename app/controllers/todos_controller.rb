@@ -9,7 +9,7 @@ class TodosController < ApplicationController
 
   def index
     @todos = Todo.includes(:user).order('created_at DESC')
-    set_todo_column       # privateメソッド内で定義
+    # set_todo_column       # privateメソッド内で定義
     @roll1 = Todo.where(roll_id: 1 ).includes(:user).order('created_at DESC')
     @roll2 = Todo.where(roll_id: 1..2 ).includes(:user).order('created_at DESC')
     @roll3 = Todo.where(roll_id: 1..3 ).includes(:user).order('created_at DESC')
@@ -58,7 +58,12 @@ class TodosController < ApplicationController
   end
 
   def searchh
-    @results = @p.result.includes(:user)  # 検索条件にマッチした商品の情報を取得
+    @searchh = @p.result.includes(:user)  # 検索条件にマッチした商品の情報を取得
+    @searchh1 = @p.result.where(roll_id: 1 ).includes(:user)
+    @searchh2 = @p.result.where(roll_id: 1..2 ).includes(:user)
+    @searchh3 = @p.result.where(roll_id: 1..3 ).includes(:user)
+    @searchh4 = @p.result.where(roll_id: 1..4 ).includes(:user)
+
   end
 
   def mytodo
@@ -93,9 +98,9 @@ class TodosController < ApplicationController
     @p = Todo.ransack(params[:q])  # 検索オブジェクトを生成
   end
 
-  def set_todo_column
-    @todo_title = Todo.select("title").distinct  # 重複なくnameカラムのデータを取り出す
-  end
+  # def set_todo_column
+  #   @todo_title = Todo.select("title").distinct  # 重複なくnameカラムのデータを取り出す
+  # end
 
 end
 
