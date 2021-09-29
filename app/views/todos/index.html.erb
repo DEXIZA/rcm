@@ -1,4 +1,4 @@
-  <h1 class="aaaaa">ゆず庵○○店　掲示板</h1><br>
+  <h1 class="aaaaa">○○店　掲示板</h1><br>
   <div class="bbbbb">おはようございます！<%= current_user.name %>さん！</div>
       
     <div class="boxContainer">
@@ -11,19 +11,24 @@
         <%= form.text_field :keyword, placeholder: "タイトルと内容から検索する", class: "search-input" %>
         <%= form.submit "検索", class: "search-btn" %>
       <% end %>
-
-      <%= search_form_for @p, url: searchh_todos_path do |f| %>
-        <%= f.collection_select :urgency_id_eq, Urgency.all, :id, :name,  include_blank: '指定なし' %>
+<div class="row7">
+  <div class="container">
+      <%= search_form_for @p, url: searchh_todos_path,class: "iiiii" do |f| %>
+        <span class="showsabu">進行状況：</span><div class="box11"><%= f.collection_select :urgency_id_eq, Urgency.all, :id, :name,  include_blank: '指定なし' %></div>
+        <span class="showsabu">カテゴリー：</span><div class="box11"><%= f.collection_select :category_id_eq, Category.all, :id, :name,  include_blank: '指定なし' %></div>
         <br>
-        <%= f.collection_select :category_id_eq, Category.all, :id, :name,  include_blank: '指定なし' %>
-        <%= f.date_field :start_gteq %>
-        ~
-        <%= f.date_field :end_lteq_end_of_day %>
-        <%= f.submit '検索' %>
+        <span class="showsabu">＜指定期間＞※設定してる投稿のみ</span>
+        <div>
+          <span class="box10"><%= f.date_field :start_gteq %></span>〜
+          <span class="box10"><%= f.date_field :end_lteq_end_of_day %></span>
+        </div>
+        <%= f.submit '絞り込み検索',class: "search-btn2" %>
       <% end %>
+  </div>
+</div>
 
 
-<div class="contents row2">
+<div class="row2">
   <div class="container">
     <% if can? :read, :ptn %>
       <p>＜投稿一覧＞</p>
