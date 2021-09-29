@@ -13,11 +13,9 @@
                           ※プライベートな内容は閲覧範囲を変えて下さい。<br>
                           例：店長を指定すれば店長のみ閲覧出来ます。<br>
         </div>
-      <%= f.collection_select(:roll_id, Roll.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+      <%= f.collection_select(:roll_id, Roll.where.not(name: '退職'), :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="sabu">Ptn=店舗従業員全員閲覧可能です。</div>
         <br>
-
-
 
                 <div >
               カテゴリー
@@ -30,17 +28,9 @@
           <hr class="hraaa">
           <div>画像添付</div>
           <%= f.file_field :image, id:"item-image" %>
-            <%= f.date_select(
-                        :start,
-                        prompt:'開始日時',
-                        start_year: Time.now.year,
-                        end_year: (Time.now.year + 3))%>
+            <span class="box10">開始日時：<%= f.date_field :start %></span>
                   <br>
-            <%= f.date_select(
-                        :end,
-                        prompt:'終了日時',
-                        start_year: Time.now.year,
-                        end_year: (Time.now.year + 3))%>
+            <span class="box10">終了日時<%= f.date_field :end %></span>
             <div class="weight-bold-text">
               現在の状況
             </div>
