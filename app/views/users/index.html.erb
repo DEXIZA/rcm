@@ -1,7 +1,7 @@
 <div class="row2">
   <div class="container">
   <h2>従業員リスト(入社日降順)</h2>
-    <%=link_to 'もどる', root_path, class:"back-btn" %>
+    <%=link_to 'もどる', root_path,class:"modorubtn" %>
     <% @user.each do |t| %>
         <div class="container3">
           <%= link_to t.name,user_path(t.id),method: :get%>

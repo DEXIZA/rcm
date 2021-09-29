@@ -5,22 +5,22 @@
     <div class="contents row2">
       <div class="container">
         <% if can? :read, :ptn %>
-          <p>＜投稿一覧＞</p>
+          <h2>投稿一覧</h2>
           <%= render partial: 'todo',collection: @roll1%>
         <% elsif can? :read, :ptnreader %>
-          <p>＜Ptn主任用投稿一覧＞</p>
+          <h2>Ptn主任用投稿一覧</h2>
           <%= render partial: 'todo',collection: @roll2 %>
         <% elsif can? :read, :employee %>
-          <p>＜社員用投稿一覧＞</p>
+          <h2>社員用投稿一覧</h2>
           <%= render partial: 'todo',collection: @roll3 %>
         <% elsif can? :read, :deputy %>
-          <p>＜副店長用投稿一覧＞</p>
+          <h2>副店長用投稿一覧</h2>
           <%= render partial: 'todo',collection: @roll4 %>
         <% elsif can? :read,:mng %>
-          <p>＜店長用全投稿一覧＞</p>
+          <h2>店長用全投稿一覧</h2>
           <%= render partial: 'todo',collection: @todos %>
         <% end %>
-        <div><%= link_to "検索条件を無くす", root_path %></div>
+        <div><%= link_to "検索条件を無くす", root_path,class:"modorubtn" %></div>
       </div>
     </div>
   </div>

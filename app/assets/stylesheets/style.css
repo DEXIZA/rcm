@@ -506,5 +506,18 @@ h1 {
   transition: 0.2s ease;
 }
 
+.modorubtn {
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #fff;
+  text-decoration: none;
+  user-select: none;
+  background: #485258;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px 0 rgb(196,210,201), 0 1px 2px 0 rgb(196,210,201);
+  transition: 0.2s ease;
+}
+
 }
 

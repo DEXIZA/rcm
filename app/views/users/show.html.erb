@@ -10,13 +10,13 @@
       <div>入社日：<%= @user.created_at.strftime('%Y年%m月%d日')%><div>
 
         <% if can? :read, :deputy %>
-          <div><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+          <div><%= link_to "プロフィール編集", edit_user_path(@user),class:"box4" %></div>
         <% end %>
 
         <% if can? :read,:mng %>
-          <div><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+          <div><%= link_to "プロフィール編集", edit_user_path(@user),class:"box4" %></div>
         <% end %>
 <br>
-    <div><%=link_to 'トップへもどる', root_path %></div>
+    <div><%=link_to 'トップへもどる', root_path,class:"modorubtn" %></div>
   </div>
 </div>
