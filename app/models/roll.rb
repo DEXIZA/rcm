@@ -6,6 +6,7 @@ class Roll < ActiveHash::Base
     { id: 4, name: '副店長' },
     { id: 5, name: '店長' },
     { id: 6, name: '退職' },
+    { id: 7, name: '' },
   ]
   include ActiveHash::Associations
   has_many :todos

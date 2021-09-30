@@ -36,5 +36,5 @@ private
   end
 
   def move_to_index
-    redirect_to action: :index unless current_user.roll == 5 || current_user.roll == 4 || current_user.roll == 10
+    redirect_to action: :index unless current_user.roll == 5 || current_user.roll == 4 || current_user.roll == 7
   end
