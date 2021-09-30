@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :move_to_index, only: [:edit, :update]
 
 
+
   def index
     @user = User.where(roll: 1..5 ).order(created_at: :desc)
     @retirement = User.where(roll: 6 ).order(updated_at: :desc)

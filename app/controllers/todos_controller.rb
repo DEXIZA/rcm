@@ -55,6 +55,11 @@ class TodosController < ApplicationController
 
   def search
     @todos = Todo.search(params[:keyword])
+    @roll1 = Todo.where(roll_id: 1 ).search(params[:keyword])
+    @roll2 = Todo.where(roll_id: 1..2 ).search(params[:keyword])
+    @roll3 = Todo.where(roll_id: 1..3 ).search(params[:keyword])
+    @roll4 = Todo.where(roll_id: 1..4 ).search(params[:keyword])
+
   end
 
   def searchh

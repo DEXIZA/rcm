@@ -16,6 +16,7 @@
       <%= search_form_for @p, url: searchh_todos_path,class: "iiiii" do |f| %>
         <span class="showsabu">進行状況：</span><div class="box11"><%= f.collection_select :urgency_id_eq, Urgency.all, :id, :name,  include_blank: '指定なし' %></div>
         <span class="showsabu">カテゴリー：</span><div class="box11"><%= f.collection_select :category_id_eq, Category.all, :id, :name,  include_blank: '指定なし' %></div>
+        <span class="showsabu">閲覧範囲：</span><div class="box11"><%= f.collection_select :roll_id_eq, Roll.where.not(name: '退職'), :id, :name,  include_blank: '指定なし' %></div>
         <br>
         <span class="showsabu">＜指定期間＞※設定してる投稿のみ</span>
         <div>
